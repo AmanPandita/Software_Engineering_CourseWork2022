@@ -1,0 +1,24 @@
+services:
+  dev:
+    image: "swiftlang/swift:nightly-focal"
+    volumes:
+      - /Users/amanpandita/Desktop/HW8/swift:/code
+    environment:
+      - USER=amanpandita
+      
+  server:
+    image: "swiftlang/swift:nightly-focal"
+    volumes:
+      - /Users/amanpandita/Desktop/HW8:/code
+    environment:
+      - USER=amanpandita
+    ports:
+        - "3000:3000"
+    command: bash -c "cd code && apt-get update && apt-get install nodejs && cd mock && node server.js"
+
+  client:
+    image: "swiftlang/swift:nightly-focal"
+    volumes:
+      - /Users/amanpandita/Desktop/OSU/CS561/HW8:/code
+    environment:
+      - USER=amanpandita
